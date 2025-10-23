@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kartu Ucapan Hari Jadi</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('https://i.imgur.com/btvd5BC.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .popup {
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      padding: 25px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      animation: fadeIn 1s ease;
+      backdrop-filter: blur(5px);
+      margin-bottom: 20px;
+    }
+
+    .popup h2 {
+      color: #ff66a3;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    .popup p {
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    button {
+      background-color: #ff66a3;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin: 5px;
+    }
+
+    button:hover {
+      background-color: #e05590;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @media screen and (max-width: 480px) {
+      .popup {
+        padding: 20px;
+        font-size: 14px;
+      }
+
+      .popup h2 {
+        font-size: 18px;
+      }
+
+      .popup p {
+        font-size: 14px;
+      }
+
+      button {
+        font-size: 13px;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 🎵 Musik latar, tidak autoplay -->
+<audio id="bgmusic" loop>
+  <source src="musik.mp3" type="audio/mpeg">
+  Musik tidak didukung oleh browser kamu.
+</audio>
+
+<div class="popup" id="popup">
+  <h2>Selamat Hari Jadi 1 Bulan Sayang! 🎉</h2>
+  <p id="message">Klik "Lanjut" untuk baca isi hatiku 💌</p>
+  <button onclick="nextMessage()">Lanjut</button>
+</div>
+
+<script>
+  const messages = [
+    "Ga kerasa yaaa udah satu bulan aja, wkwk. Satu bulan yang penuh drama; banyak berantemnya, banyak ovtnya, banyak ngambeknya. Baru juga satu bulan wkwk.",
+    "Maaf ya sayang, aku belum bisa jadi yang terbaik buat kamu, belum bisa selalu ada buat kamu, belum bisa jadi apa yang kamu mau.",
+    "Aku tau, aku ngebosenin, aku gak peka, aku keras kepala. Aku emang gabisa janjiin semuanya, tapi aku selalu berusaha jadi versi terbaik dari semua cowok yang pernah kamu kenal.",
+    "Aku bisa pastiin itu sayang. Setiap apa yang aku bilang ke kamu, pasti aku usahain. Apapun halangannya.",
+    "Harapannya si, semoga kamu ga cari cowo lain yang bisa melengkapi kekurangan aku.",
+    "Aku cuma mau kamu bahagia karena aku, bukan karena cowo lain.",
+    "Kalo kamu bahagia sama cowo lain, aku ruqyah kamu buahahahahahaha (ketawa jahat).",
+    "Stay with me sampe kapanpun ya sayaaanggg. Love youu 🤍"
+  ];
+
+  let index = 0;
+  let musicStarted = false;
+
+  function nextMessage() {
+    if (!musicStarted) {
+      document.getElementById("bgmusic").play();
+      musicStarted = true;
+    }
+
+    const messageElement = document.getElementById("message");
+    if (index < messages.length) {
+      messageElement.innerText = messages[index];
+      index++;
+    } else {
+      messageElement.innerText = "💖 Terima kasih udah baca semuanya, sayang. Ini dari hati aku buat kamu 💖";
+      document.querySelector("button").style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>
